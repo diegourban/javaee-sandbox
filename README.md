@@ -37,3 +37,6 @@ Add the driver:
 ```
 
 Extract modules.zip at Wildfly modules folder
+
+## Usage
+```http://localhost:8080/javaee-sandbox/livros/form.xhtml```
