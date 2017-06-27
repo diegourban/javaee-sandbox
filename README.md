@@ -5,9 +5,12 @@
 * MySQL
 
 ## Installation
-```mysql> create database javaee_sandbox;```
+Create the MySQL database:
+```
+mysql> create database javaee_sandbox;
+```
 
-
+Config. the datasource:
 ```
 <datasource jndi-name="java:jboss/datasources/JavaeeSandboxDS" pool-name="JavaeeSandboxDS">
     <connection-url>jdbc:mysql://localhost:3306/javaee_sandbox</connection-url>
@@ -26,7 +29,7 @@
 </datasource>
 ```
 
-
+Add the driver:
 ```
 <driver name="mysql" module="com.mysql">
     <datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlDataSource</datasource-class>
