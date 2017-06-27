@@ -35,3 +35,5 @@ Add the driver:
     <datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlDataSource</datasource-class>
 </driver>
 ```
+
+Extract modules.zip at Wildfly modules folder
