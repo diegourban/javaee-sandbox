@@ -1,12 +1,15 @@
 package org.javaee.sandbox.models;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Livro {
@@ -14,15 +17,18 @@ public class Livro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private String titulo;
-	
+
 	@Lob
 	private String descricao;
-	
+
 	private Integer numeroPaginas;
-	
+
 	private BigDecimal preco;
+
+	@ManyToMany
+	private List<Autor> autores = new ArrayList<>();
 
 	public String getTitulo() {
 		return titulo;
@@ -56,10 +62,18 @@ public class Livro {
 		this.preco = preco;
 	}
 
+	public List<Autor> getAutores() {
+		return autores;
+	}
+
+	public void setAutores(List<Autor> autores) {
+		this.autores = autores;
+	}
+
 	@Override
 	public String toString() {
-		return "Livro [titulo=" + titulo + ", descricao=" + descricao + ", numeroPaginas=" + numeroPaginas + ", preco="
-				+ preco + "]";
+		return "Livro [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", numeroPaginas="
+				+ numeroPaginas + ", preco=" + preco + ", autores=" + autores + "]";
 	}
 
 }
