@@ -30,6 +30,9 @@ public class AdminLivrosBean {
 	@Transactional // JTA
 	public String salvar() {
 		System.out.println(autoresId);
+		for(final Integer autorId : autoresId) {
+			livro.getAutores().add(new Autor(autorId));
+		}
 		livroDao.salvar(livro);
 		System.out.println("Livro cadastrado: " + this.livro);
 		this.livro = new Livro();

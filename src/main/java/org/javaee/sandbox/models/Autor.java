@@ -17,6 +17,10 @@ public class Autor {
 	public Autor() {
 		// JPA default constructor
 	}
+	
+	public Autor(Integer id) {
+		this.id = id;
+	}
 
 	public Autor(Integer id, String nome) {
 		this.id = id;

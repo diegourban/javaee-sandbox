@@ -17,7 +17,7 @@ public class LivroDao {
 	}
 
 	public List<Livro> listar() {
-		String jpql = "select distict(l) from Livro l join fetch l.autores";
+		String jpql = "select distinct(l) from Livro l left join fetch l.autores";
 
 		return entityManager.createQuery(jpql, Livro.class).getResultList();
 	}
