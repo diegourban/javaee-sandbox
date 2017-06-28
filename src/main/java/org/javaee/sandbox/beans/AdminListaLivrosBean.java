@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import org.javaee.sandbox.daos.LivroDao;
 import org.javaee.sandbox.models.Livro;
 
-@Model // envolve @Named e @RequestScoped
+@Model // encapsula @Named e @RequestScoped
 public class AdminListaLivrosBean {
 	
 	@Inject
