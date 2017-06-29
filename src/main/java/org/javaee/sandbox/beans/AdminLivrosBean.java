@@ -1,6 +1,5 @@
 package org.javaee.sandbox.beans;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -30,13 +29,8 @@ public class AdminLivrosBean {
 
 	private Livro livro = new Livro();
 
-	private List<Integer> autoresId = new ArrayList<>();
-
 	@Transactional // JTA
 	public String salvar() {
-		for (final Integer autorId : autoresId) {
-			livro.getAutores().add(new Autor(autorId));
-		}
 		livroDao.salvar(livro);
 
 		context.getExternalContext().getFlash().setKeepMessages(true);
@@ -60,14 +54,6 @@ public class AdminLivrosBean {
 
 	public void setLivro(Livro livro) {
 		this.livro = livro;
-	}
-
-	public List<Integer> getAutoresId() {
-		return autoresId;
-	}
-
-	public void setAutoresId(List<Integer> autoresId) {
-		this.autoresId = autoresId;
 	}
 
 }
