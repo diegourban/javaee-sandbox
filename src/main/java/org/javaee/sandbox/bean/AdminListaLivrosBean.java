@@ -1,4 +1,4 @@
-package org.javaee.sandbox.beans;
+package org.javaee.sandbox.bean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
-import org.javaee.sandbox.daos.LivroDao;
-import org.javaee.sandbox.models.Livro;
+import org.javaee.sandbox.dao.LivroDao;
+import org.javaee.sandbox.model.Livro;
 
 @Model // encapsula @Named e @RequestScoped
 public class AdminListaLivrosBean {

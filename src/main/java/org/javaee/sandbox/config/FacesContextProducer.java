@@ -1,4 +1,4 @@
-package org.javaee.sandbox.configs;
+package org.javaee.sandbox.config;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;

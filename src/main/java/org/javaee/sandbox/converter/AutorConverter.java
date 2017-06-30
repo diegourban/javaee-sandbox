@@ -5,7 +5,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import org.javaee.sandbox.models.Autor;
+import org.javaee.sandbox.model.Autor;
 
 @FacesConverter("autorConverter")
 public class AutorConverter implements Converter {

@@ -1,4 +1,4 @@
-package org.javaee.sandbox.beans;
+package org.javaee.sandbox.bean;
 
 import java.util.List;
 
@@ -7,12 +7,14 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.Part;
 import javax.transaction.Transactional;
 
-import org.javaee.sandbox.daos.AutorDao;
-import org.javaee.sandbox.daos.LivroDao;
-import org.javaee.sandbox.models.Autor;
-import org.javaee.sandbox.models.Livro;
+import org.javaee.sandbox.dao.AutorDao;
+import org.javaee.sandbox.dao.LivroDao;
+import org.javaee.sandbox.infra.FileSaver;
+import org.javaee.sandbox.model.Autor;
+import org.javaee.sandbox.model.Livro;
 
 @Named // CDI
 @RequestScoped // CDI
@@ -28,10 +30,16 @@ public class AdminLivrosBean {
 	private FacesContext context;
 
 	private Livro livro = new Livro();
+	
+	private Part capaLivro;
 
 	@Transactional // JTA
 	public String salvar() {
 		livroDao.salvar(livro);
+		
+		final FileSaver fileSaver = new FileSaver();
+		final String relativePath = fileSaver.write(capaLivro, "livros"); 
+		livro.setCapaPath(relativePath);
 
 		context.getExternalContext().getFlash().setKeepMessages(true);
 
@@ -54,6 +62,14 @@ public class AdminLivrosBean {
 
 	public void setLivro(Livro livro) {
 		this.livro = livro;
+	}
+
+	public Part getCapaLivro() {
+		return capaLivro;
+	}
+
+	public void setCapaLivro(Part capaLivro) {
+		this.capaLivro = capaLivro;
 	}
 
 }

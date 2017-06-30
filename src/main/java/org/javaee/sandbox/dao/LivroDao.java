@@ -1,11 +1,11 @@
-package org.javaee.sandbox.daos;
+package org.javaee.sandbox.dao;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.javaee.sandbox.models.Livro;
+import org.javaee.sandbox.model.Livro;
 
 public class LivroDao {
 

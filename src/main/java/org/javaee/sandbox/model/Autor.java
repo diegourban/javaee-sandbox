@@ -1,4 +1,4 @@
-package org.javaee.sandbox.models;
+package org.javaee.sandbox.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
