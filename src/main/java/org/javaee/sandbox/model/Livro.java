@@ -52,6 +52,14 @@ public class Livro {
 	@Size(min = 1)
 	private List<Autor> autores = new ArrayList<>();
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getTitulo() {
 		return titulo;
 	}
