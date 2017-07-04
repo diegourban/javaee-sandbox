@@ -844,6 +844,13 @@ body {
   margin-bottom: 2em;
 }
 
+.infosAdicionaisDoLivro-info-dataPublicacao {
+  font-weight: 600;
+  display: inline-block;
+  float: left;
+  clear: left;
+}
+
 .infosAdicionaisDoLivro-info-titulo {
   font-weight: 600;
   display: inline-block;
@@ -878,12 +885,14 @@ body {
   margin-top: .7em;
 }
 
+.infosAdicionaisDoLivro-info-dataPublicacao,
 .infosAdicionaisDoLivro-info-titulo,
 .infosAdicionaisDoLivro-info-valor {
   margin-bottom: .5em;
   margin-right: .5em;
 }
 
+.infosAdicionaisDoLivro-info-dataPublicacao:not(:first-of-type),
 .infosAdicionaisDoLivro-info-titulo:not(:first-of-type),
 .infosAdicionaisDoLivro-info-valor:not(:first-of-type) {
   margin-top: .5em;
