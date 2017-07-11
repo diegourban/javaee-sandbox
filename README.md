@@ -1,5 +1,7 @@
 # Java EE Sandbox
 
+Java EE Sandbox
+
 ## Requirements
 * WildFly Full 10.1.0.Final
 * MySQL (Optional)
