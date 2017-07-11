@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 	version="2.1">
 	
-	<!-- <persistence-unit name="javaee-sandbox-dev" transaction-type="JTA">
+	<persistence-unit name="javaee-sandbox-dev" transaction-type="JTA">
 		<description>Dev persistence unit</description>
 		
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
@@ -12,27 +12,13 @@
 		<jta-data-source>java:jboss/datasources/JavaeeSandboxDS</jta-data-source>
 
 		<properties>
-			Configurações específicas do Hibernate
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" /> -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
-	</persistence-unit> -->
-	
-	<persistence-unit name="javaee-sandbox-test" transaction-type="JTA">
-		<description>Dev persistence unit</description>
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		
-		<jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
-
-		<properties>
-			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="true" />
-		</properties>
 	</persistence-unit>
-
+	
 </persistence>
 

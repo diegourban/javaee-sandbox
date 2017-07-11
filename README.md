@@ -2,15 +2,27 @@
 
 ## Requirements
 * WildFly Full 10.1.0.Final
-* MySQL
+* MySQL (Optional)
 
 ## Installation
-Create the MySQL database:
+Configure the H2 database datasource:
+```
+<datasource jndi-name="java:jboss/datasources/JavaeeSandboxDS" pool-name="JavaeeSandboxDS">
+	<connection-url>jdbc:h2:file:C:\Users\diego\javaee_sandbox;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+	<driver>h2</driver>
+	<security>
+		<user-name>sa</user-name>
+		<password>sa</password>
+	</security>
+</datasource>
+```
+
+Create the MySQL database(Optional):
 ```
 mysql> create database javaee_sandbox;
 ```
 
-Config. the datasource:
+Config. the mysql datasource:
 ```
 <datasource jndi-name="java:jboss/datasources/JavaeeSandboxDS" pool-name="JavaeeSandboxDS">
     <connection-url>jdbc:mysql://localhost:3306/javaee_sandbox</connection-url>
