@@ -14,7 +14,6 @@ import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 
 import org.javaee.sandbox.dao.CompraDao;
-import org.javaee.sandbox.service.PagamentoGateway;
 
 @Named
 @SessionScoped
@@ -29,9 +28,6 @@ public class CarrinhoCompras implements Serializable {
 	@Inject
 	private CompraDao compraDao;
 	
-	@Inject
-	private PagamentoGateway pagamentoGateway;
-
 	public void add(CarrinhoItem item) {
 		itens.add(item);
 	}
@@ -61,14 +57,9 @@ public class CarrinhoCompras implements Serializable {
 		return itens.stream().mapToInt(item -> item.getQuantidade()).sum();
 	}
 
-	public void finalizar(Usuario usuario) {
-		Compra compra = new Compra();
-		compra.setUsuario(usuario);
+	public void finalizar(Compra compra) {
 		compra.setItens(this.toJson());
-		compraDao.salvar(compra);
-		
-		String response = this.pagamentoGateway.pagar(getTotal());
-		System.out.println(response);
+		compraDao.salvar(compra);		
 	}
 
 	private String toJson() {

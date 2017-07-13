@@ -1,11 +1,14 @@
 package org.javaee.sandbox.model;
 
+import java.util.UUID;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 
 @Entity
 public class Compra {
@@ -18,6 +21,13 @@ public class Compra {
 	private Usuario usuario;
 
 	private String itens;
+
+	private String uuid;
+
+	@PrePersist // api callback jpa
+	public void createUUID() {
+		this.uuid = UUID.randomUUID().toString();
+	}
 
 	public Integer getId() {
 		return id;
@@ -41,6 +51,14 @@ public class Compra {
 
 	public void setItens(String itens) {
 		this.itens = itens;
+	}
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 
 }
