@@ -12,13 +12,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.Invocation.Builder;
-import javax.ws.rs.client.WebTarget;
 
 import org.javaee.sandbox.dao.CompraDao;
+import org.javaee.sandbox.service.PagamentoGateway;
 
 @Named
 @SessionScoped
@@ -32,6 +28,9 @@ public class CarrinhoCompras implements Serializable {
 
 	@Inject
 	private CompraDao compraDao;
+	
+	@Inject
+	private PagamentoGateway pagamentoGateway;
 
 	public void add(CarrinhoItem item) {
 		itens.add(item);
@@ -68,13 +67,7 @@ public class CarrinhoCompras implements Serializable {
 		compra.setItens(this.toJson());
 		compraDao.salvar(compra);
 		
-		Client client = ClientBuilder.newClient();
-		Pagamento pagamento = new Pagamento(getTotal());
-		String target = "http://book-payment.herokuapp.com/payment";
-		Entity<Pagamento> json = Entity.json(pagamento);
-		WebTarget webTarget = client.target(target);
-		Builder request = webTarget.request();
-		String response = request.post(json, String.class);
+		String response = this.pagamentoGateway.pagar(getTotal());
 		System.out.println(response);
 	}
 
