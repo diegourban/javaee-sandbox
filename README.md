@@ -7,7 +7,7 @@ Java EE Sandbox
 * H2 or MySQL
 
 ## Installation
-### Configure H2
+### Configure H2 database:
 Add the following datasouce at jboss configuration:
 
 ```
@@ -21,7 +21,7 @@ Add the following datasouce at jboss configuration:
 </datasource>
 ```
 
-### Configure MySQL:
+### Configure MySQL database:
 Create the database:
 
 ```
@@ -60,6 +60,8 @@ Extract modules.zip at Wildfly modules folder and add the following driver:
 
 ## Usage
 
-```http://localhost:8080/javaee-sandbox/index.xhtml```
-```http://localhost:8080/javaee-sandbox/livros/form.xhtml```
-```http://localhost:8080/javaee-sandbox/livros/livros.xhtml```
+```http://localhost:8080/javaee-sandbox/index.xhtml``` - home page
+
+```http://localhost:8080/javaee-sandbox/livros/form.xhtml``` - book form
+
+```http://localhost:8080/javaee-sandbox/livros/livros.xhtml``` - book list
