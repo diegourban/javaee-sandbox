@@ -1,6 +1,6 @@
 # Java EE Sandbox
 
-Java EE Sandbox
+Java EE Sandbox using JPA, JTA, CDI and JAX-RS
 
 ## Requirements
 * WildFly Full 10.1.0.Final
