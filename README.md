@@ -4,10 +4,12 @@ Java EE Sandbox
 
 ## Requirements
 * WildFly Full 10.1.0.Final
-* MySQL (Optional)
+* H2 or MySQL
 
 ## Installation
-Configure the H2 database datasource:
+### Configure H2
+Add the following datasouce at jboss configuration:
+
 ```
 <datasource jndi-name="java:jboss/datasources/JavaeeSandboxDS" pool-name="JavaeeSandboxDS">
 	<connection-url>jdbc:h2:file:C:\Users\diego\javaee_sandbox;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
@@ -19,12 +21,15 @@ Configure the H2 database datasource:
 </datasource>
 ```
 
-Create the MySQL database(Optional):
+### Configure MySQL:
+Create the database:
+
 ```
 mysql> create database javaee_sandbox;
 ```
 
-Config. the mysql datasource:
+Add the following datasouce at jboss configuration:
+
 ```
 <datasource jndi-name="java:jboss/datasources/JavaeeSandboxDS" pool-name="JavaeeSandboxDS">
     <connection-url>jdbc:mysql://localhost:3306/javaee_sandbox</connection-url>
@@ -43,14 +48,18 @@ Config. the mysql datasource:
 </datasource>
 ```
 
-Add the driver:
+Extract modules.zip at Wildfly modules folder and add the following driver:
+
 ```
 <driver name="mysql" module="com.mysql">
     <datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlDataSource</datasource-class>
 </driver>
 ```
 
-Extract modules.zip at Wildfly modules folder
+
 
 ## Usage
+
+```http://localhost:8080/javaee-sandbox/index.xhtml```
 ```http://localhost:8080/javaee-sandbox/livros/form.xhtml```
+```http://localhost:8080/javaee-sandbox/livros/livros.xhtml```
