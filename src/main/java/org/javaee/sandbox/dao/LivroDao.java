@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 
+import org.hibernate.jpa.QueryHints;
 import org.javaee.sandbox.model.Livro;
 
 @Stateful // será mantido estado do Dao equanto o escopo do bean estiver vivo
@@ -26,12 +27,12 @@ public class LivroDao {
 
 	public List<Livro> ultimosLancamentos() {
 		String jpql = "select l from Livro l order by l.dataPublicacao desc";
-		return entityManager.createQuery(jpql, Livro.class).setMaxResults(5).getResultList();
+		return entityManager.createQuery(jpql, Livro.class).setMaxResults(5).setHint(QueryHints.HINT_CACHEABLE, true).getResultList();
 	}
 
 	public List<Livro> demaisLivros() {
 		String jpql = "select l from Livro l order by l.dataPublicacao desc";
-		return entityManager.createQuery(jpql, Livro.class).setFirstResult(5).getResultList();
+		return entityManager.createQuery(jpql, Livro.class).setFirstResult(5).setHint(QueryHints.HINT_CACHEABLE, true).getResultList();
 	}
 
 	public Livro buscarPorId(Integer id) {
