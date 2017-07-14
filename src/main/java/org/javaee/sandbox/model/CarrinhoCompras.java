@@ -27,7 +27,7 @@ public class CarrinhoCompras implements Serializable {
 
 	@Inject
 	private CompraDao compraDao;
-	
+
 	public void add(CarrinhoItem item) {
 		itens.add(item);
 	}
@@ -59,17 +59,16 @@ public class CarrinhoCompras implements Serializable {
 
 	public void finalizar(Compra compra) {
 		compra.setItens(this.toJson());
-		compraDao.salvar(compra);		
+		compra.setTotal(getTotal());
+		compraDao.salvar(compra);
 	}
 
 	private String toJson() {
 		JsonArrayBuilder builder = Json.createArrayBuilder();
 		for (CarrinhoItem item : itens) {
-			builder.add(Json.createObjectBuilder()
-						.add("titulo", item.getLivro().getTitulo())
-						.add("preco", item.getLivro().getPreco())
-						.add("quantidade", item.getQuantidade())
-						.add("total", getTotal(item)));
+			builder.add(Json.createObjectBuilder().add("titulo", item.getLivro().getTitulo())
+					.add("preco", item.getLivro().getPreco()).add("quantidade", item.getQuantidade())
+					.add("total", getTotal(item)));
 		}
 		String json = builder.build().toString();
 		System.out.println(json);
