@@ -12,6 +12,8 @@
 		<jta-data-source>java:jboss/datasources/JavaeeSandboxDS</jta-data-source>
 
 		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+		<!-- <shared-cache-mode>ALL</shared-cache-mode> -->
+		<!-- <shared-cache-mode>DISABLE_SELECTIVE</shared-cache-mode> -->
 		<properties>
 			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" /> -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
@@ -19,6 +21,8 @@
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.cache.use_query_cache" value="true" />
+			<property name="hibernate.cache.infinispan.entity.expiration.lifespan" value="900000" />
+			<property name="hibernate.cache.infinispan.entity.expiration.max_idle" value="300000" />
 		</properties>
 	</persistence-unit>
 	
