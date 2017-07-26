@@ -56,7 +56,20 @@ Extract modules.zip at Wildfly modules folder and add the following driver:
 </driver>
 ```
 
+### Configure Mail-Session:
+```
+<mail-session name="gmail" jndi-name="java:jboss/mail/gmail">
+    <smtp-server outbound-socket-binding-ref="mail-smtp-gmail" ssl="true" username="{email}" password="{password}"/>
+</mail-session>
+```
 
+```
+<outbound-socket-binding name="mail-smtp-gmail">
+    <remote-destination host="smtp.gmail.com" port="465"/>
+</outbound-socket-binding>
+```
+
+Habilitar aplicativos menos seguros no gmail
 
 ## Usage
 
