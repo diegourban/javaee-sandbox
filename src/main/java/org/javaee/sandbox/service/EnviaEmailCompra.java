@@ -2,7 +2,6 @@ package org.javaee.sandbox.service;
 
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -16,7 +15,6 @@ import org.javaee.sandbox.model.Compra;
 @MessageDriven(activationConfig = {
 		@ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "java:/jms/topics/CarrinhoComprasTopico"),
 		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic") })
-@Stateless
 public class EnviaEmailCompra implements MessageListener {
 
 	@Inject
