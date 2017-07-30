@@ -1,6 +1,6 @@
 # Java EE Sandbox
 
-Java EE Sandbox using JPA, JTA, CDI and JAX-RS
+Java EE Sandbox using JPA, JTA, CDI, JAX-RS, JMS and JAAS
 
 ## Requirements
 * WildFly Full 10.1.0.Final
@@ -20,6 +20,13 @@ Add the following datasouce at jboss configuration:
 	</security>
 </datasource>
 ```
+
+To access H2 database:
+
+```
+java -jar C:\Users\diego\wildfly\...\h2-X.X.X.jar
+```
+
 
 ### Configure MySQL database:
 Create the database:
@@ -70,6 +77,31 @@ Extract modules.zip at Wildfly modules folder and add the following driver:
 ```
 
 Google > My Account > Sign-in & Security: Allow less secure apps
+
+### Insert admin user:
+
+```
+INSERT INTO SYSTEMUSER (EMAIL, SENHA) VALUES('admin@email.com', 'jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=');
+ISNERT INTO SYSTEMROLE VALUES ('ADMIN');
+INSERT INTO SYSTEMUSER_SYSTEMROLE VALUES (1, 'ADMIN');
+```
+
+### Configure Security Domain:
+
+```
+<security-domain name="database-login" cache-type="default">
+	<authentication>
+		<login-module flag="required" code="Database">
+			<module-option name="dsJndiName" value="java:jboss/datasources/JavaeeSandboxDS"/>
+			<module-option name="principalQuery" value="SELECT SENHA FROM SYSTEMUSER WHERE EMAIL = ?"/>
+			<module-option name="rolesQuery" value="SELECT UR.ROLES_NAME, 'Roles' FROM SYSTEMUSER_SYSTEMROLE UR INNER JOIN SYSTEMUSER SU ON UR.SYSTEMUSER_ID = SU.ID WHERE SU.EMAIL = ?"/>
+			<module-option name="hashAlgorithm" value="SHA-256"/>
+			<module-option name="hashEncoding" value="base64"/>
+		</login-module>
+	</authentication>
+</security-domain>
+```
+
 
 ## Usage
 
