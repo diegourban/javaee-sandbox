@@ -69,7 +69,7 @@ Extract modules.zip at Wildfly modules folder and add the following driver:
 </outbound-socket-binding>
 ```
 
-Habilitar aplicativos menos seguros no gmail
+Google > My Account > Sign-in & Security: Allow less secure apps
 
 ## Usage
 

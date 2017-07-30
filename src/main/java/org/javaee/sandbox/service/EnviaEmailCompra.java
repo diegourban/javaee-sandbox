@@ -13,8 +13,7 @@ import org.javaee.sandbox.infra.MailSender;
 import org.javaee.sandbox.model.Compra;
 
 @MessageDriven(activationConfig = {
-		@ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "java:/jms/topics/CarrinhoComprasTopico"),
-		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic") })
+		@ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "java:/jms/topics/CarrinhoComprasTopico") })
 public class EnviaEmailCompra implements MessageListener {
 
 	@Inject
