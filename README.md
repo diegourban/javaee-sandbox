@@ -82,7 +82,7 @@ Google > My Account > Sign-in & Security: Allow less secure apps
 
 ```
 INSERT INTO SYSTEMUSER (EMAIL, SENHA) VALUES('admin@email.com', 'jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=');
-ISNERT INTO SYSTEMROLE VALUES ('ADMIN');
+INSERT INTO SYSTEMROLE VALUES ('ADMIN');
 INSERT INTO SYSTEMUSER_SYSTEMROLE VALUES (1, 'ADMIN');
 ```
 
@@ -93,7 +93,7 @@ INSERT INTO SYSTEMUSER_SYSTEMROLE VALUES (1, 'ADMIN');
 	<authentication>
 		<login-module flag="required" code="Database">
 			<module-option name="dsJndiName" value="java:jboss/datasources/JavaeeSandboxDS"/>
-			<module-option name="principalQuery" value="SELECT SENHA FROM SYSTEMUSER WHERE EMAIL = ?"/>
+			<module-option name="principalsQuery" value="SELECT SENHA FROM SYSTEMUSER WHERE EMAIL = ?"/>
 			<module-option name="rolesQuery" value="SELECT UR.ROLES_NAME, 'Roles' FROM SYSTEMUSER_SYSTEMROLE UR INNER JOIN SYSTEMUSER SU ON UR.SYSTEMUSER_ID = SU.ID WHERE SU.EMAIL = ?"/>
 			<module-option name="hashAlgorithm" value="SHA-256"/>
 			<module-option name="hashEncoding" value="base64"/>
