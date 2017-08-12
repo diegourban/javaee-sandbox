@@ -19,4 +19,8 @@ public class UsuariosSession {
 		return this.sessions;
 	}
 
+	public void remove(Session session) {
+		this.sessions.remove(session);
+	}
+
 }

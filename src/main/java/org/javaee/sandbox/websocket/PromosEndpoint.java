@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.websocket.CloseReason;
+import javax.websocket.OnClose;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
@@ -20,6 +22,12 @@ public class PromosEndpoint {
 	public void onMessage(final Session session) {
 		usuarios.add(session);
 	}
+	
+	@OnClose
+	public void onClose(Session session, CloseReason closeReason) {
+		usuarios.remove(session);
+		System.out.println(closeReason.getCloseCode());
+	}
 
 	public void send(final Promo promo) {
 		final List<Session> sessions = usuarios.getSessions();
@@ -33,4 +41,6 @@ public class PromosEndpoint {
 			}
 		}
 	}
+	
+	
 }

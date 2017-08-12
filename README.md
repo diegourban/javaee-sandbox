@@ -66,7 +66,7 @@ Extract modules.zip at Wildfly modules folder and add the following driver:
 ### Configure Mail-Session:
 ```
 <mail-session name="gmail" jndi-name="java:jboss/mail/gmail">
-    <smtp-server outbound-socket-binding-ref="mail-smtp-gmail" ssl="true" username="{email}" password="{password}"/>
+    <smtp-server outbound-socket-binding-ref="mail-smtp-gmail" ssl="true" username="javaee-sandbox@gmail.com" password="{secret}"/>
 </mail-session>
 ```
 
@@ -81,6 +81,7 @@ Google > My Account > Sign-in & Security: Allow less secure apps
 ### Insert admin user:
 
 ```
+-- admin@email.com / 123456
 INSERT INTO SYSTEMUSER (EMAIL, SENHA) VALUES('admin@email.com', 'jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI=');
 INSERT INTO SYSTEMROLE VALUES ('ADMIN');
 INSERT INTO SYSTEMUSER_SYSTEMROLE VALUES (1, 'ADMIN');
@@ -107,6 +108,8 @@ INSERT INTO SYSTEMUSER_SYSTEMROLE VALUES (1, 'ADMIN');
 
 ```http://localhost:8080/javaee-sandbox/index.xhtml``` - home page
 
-```http://localhost:8080/javaee-sandbox/livros/form.xhtml``` - book form
+```http://localhost:8080/javaee-sandbox/admin/livros/form.xhtml``` - book form
 
-```http://localhost:8080/javaee-sandbox/livros/livros.xhtml``` - book list
+```http://localhost:8080/javaee-sandbox/admin/livros/livros.xhtml``` - book list
+
+```http://localhost:8080/javaee-sandbox/admin/promos.xhtml``` - promotions

@@ -214,7 +214,7 @@
 	<ul class="vitrineDestaquinho-lista">
 		<ui:repeat value="#{homeBean.ultimosLancamentos()}" var="livro">
 			<li class="livroNaVitrine vitrineDestaquinho-produto">
-				<a href="#{request.contextPath}/livros/detalhe-livro.xhtml?id=#{livro.id}" class="livroNaVitrine-link"
+				<a href="#{request.contextPath}/detalhe-livro.xhtml?id=#{livro.id}" class="livroNaVitrine-link"
 						title="#{livro.titulo}">
 					<div class="livroNaVitrine-imagemContainer" role="presentation">
 						<img class="livroNaVitrine-imagem" 
@@ -237,7 +237,7 @@
 	<ul class="vitrineDaColecao-lista">
 		<ui:repeat value="#{homeBean.demaisLivros()}" var="livro">
 			<li class="livroNaVitrine vitrineDaColecao-produto">
-				<a href="#{request.contextPath}/livros/detalhe-livro.xhtml?id=#{livro.id}" class="livroNaVitrine-link" 
+				<a href="#{request.contextPath}/detalhe-livro.xhtml?id=#{livro.id}" class="livroNaVitrine-link" 
 					title="#{livro.titulo}">
 					<div class="livroNaVitrine-imagemContainer" role="presentation">
 						<img class="livroNaVitrine-imagem" src="#{request.contextPath}/file/#{livro.capaPath}" 
@@ -417,7 +417,7 @@
 	canalDePromos.onmessage = function(message) {
 		var novaPromo = JSON.parse(message.data);
 		if(confirm("Que tal aproveitar a promoção relâmpago " + novaPromo.titulo)) {
-			document.location.href = "#{request.contextPath}/livros/detalhe-livro.xhtml?id=" + novaPromo.livroId;
+			document.location.href = "#{request.contextPath}/detalhe-livro.xhtml?id=" + novaPromo.livroId;
 		}
 	}
 </script>
